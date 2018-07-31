@@ -1,0 +1,96 @@
+https://coderpad.io/PJMJ7QWM
+
+# 1. Draw the following Xmas Tree on the terminal output (height = 6)
+# Hint: do this in 2 parts:
+# - fill up a 2 dimensional array
+# - print the content of the 2d array
+ 
+#     #
+#    ###
+#   #####
+#  #######
+# #########
+#     #
+
+
+#      #
+#     ###
+#    #####
+#   #######
+#  #########
+#      #
+# 
+#     # 
+
+# ----
+# 2. Draw Xmas Trees with the following heights: 6, 8, 4, 10, 5, 4
+ 
+# ----
+# 3. Decorate the tree with a star at its top
+# 
+#     *
+#    ###
+#   #####
+#  #######
+# #########
+#     #
+ 
+# ----
+
+# 4. Make the Xmas Tree hollow
+# 
+#     *
+#    # #
+#   #   #
+#  #     #
+# #########
+#     #
+  
+# ----
+# 5. Print 2 trees of height 6 next to each other
+ 
+ 
+#     *         *
+#    # #       # #
+#   #   #     #   #
+#  #     #   #     #
+# ######### #########
+#     #         #
+
+# height=7 width=11
+# height=8 widht=13
+# width = height*2-3 
+
+
+
+def draw_tree(height):
+    width = height*2-3  # height=6 -> width=9 
+    array = [ [' '] * (width * 2 + 1) for i in range(height) ]
+
+    for i in range(height-2):
+        number_of_character = 1 + i*2
+        start_x = int(width/2) - i
+        array[i][start_x] = '#'
+        array[i][start_x+number_of_character-1] = '#'
+        array[i][start_x + width + 1] = '#'
+        array[i][start_x+number_of_character-1 + width + 1] = '#'
+    for x in range(width):
+        array[height-2][x] = '#'
+        array[height-2][x + width + 1] = '#'
+        
+    array[height-1][int(width/2)] = '#'
+    array[height-1][int(width/2) + width + 1] = '#'
+    array[0][int(width/2)] = '*'
+    array[0][int(width/2) + width + 1] = '*'
+    for line in array:
+        print ''.join(line)
+
+
+draw_tree(6)
+draw_tree(8)
+draw_tree(4)
+draw_tree(10)
+draw_tree(5)
+draw_tree(4)
+
+draw_tree(3)
